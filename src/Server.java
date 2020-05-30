@@ -13,7 +13,7 @@ public class Server {
 
 	public void serveClients() {
 		Socket clientSocket;
-		CountdownRequestHandler handler;
+		ClientRequestHandler handler;
 		Thread handlerThread;
 		int clientCounter = 0;
 
@@ -28,7 +28,7 @@ public class Server {
 				break;
 			}
 
-			handler = new CountdownRequestHandler(clientSocket, clientCounter);
+			handler = new ClientRequestHandler(clientSocket, clientCounter);
 			handlerThread = new Thread(handler);
 			handlerThread.start();
 			System.out.println("Client #" + clientCounter + " has connected.");
@@ -50,12 +50,12 @@ public class Server {
 	}
 }
 
-class CountdownRequestHandler implements Runnable {
+class ClientRequestHandler implements Runnable {
 
 	private Socket clientSocket;
 	private int connectionNumber;
 
-	public CountdownRequestHandler(Socket clientSocket, int connectionNumber) {
+	public ClientRequestHandler(Socket clientSocket, int connectionNumber) {
 		Objects.requireNonNull(clientSocket, "The provided client socket is NULL.");
 
 		this.clientSocket = clientSocket;

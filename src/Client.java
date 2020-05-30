@@ -26,7 +26,7 @@ public class Client {
             bw = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             br = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-            System.out.println("Enter your message to the server!");
+            System.out.println("You can now enter requests to the server. Type \"close\" to close the connection.");
             request = inputReader.readLine();
             while (request != null) {
                 try {
