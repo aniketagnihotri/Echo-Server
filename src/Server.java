@@ -17,7 +17,7 @@ public class Server {
 		Thread handlerThread;
 		int clientCounter = 0;
 
-		System.out.println("Serving clients on port " + this.serverSocket.getLocalPort() + ".");
+		System.out.println("The server has started and is serving clients on port " + this.serverSocket.getLocalPort() + ".");
 
 		while (true) {
 			try {
@@ -40,7 +40,6 @@ public class Server {
 		Server newServer;
 		try {
 			newServer = new Server();
-			System.out.println("Server has started.");
 			newServer.serveClients();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -85,7 +84,7 @@ class CountdownRequestHandler implements Runnable {
 					bw.write(inputFeed + "\n");
 					bw.flush();
 				} catch (IOException e) {
-					bw.write("An error occurred!");
+					bw.write("an error occurred!");
 					e.printStackTrace();
 				}
 			}

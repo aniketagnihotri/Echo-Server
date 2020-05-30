@@ -14,14 +14,14 @@ public class Client {
         String request, response;
 
         try {
-            System.out.println("Enter the server's hostname: ");
+            System.out.print("Server hostname: ");
             hostname = inputReader.readLine();
-            System.out.println("Enter the server's port number: ");
+            System.out.print ("Server port number: ");
             portNum = inputReader.readLine();
             port = Integer.parseInt(portNum);
 
             clientSocket = new Socket(hostname, port);
-            System.out.println("\nClient-side socket has been initialized!");
+            System.out.println("\nClient-side socket has been initialized and a connection has been established!");
 
             bw = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             br = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -34,6 +34,9 @@ public class Client {
                     bw.flush();
                     response = br.readLine();
                     System.out.println("Server says " + response);
+                    if (request.equalsIgnoreCase("close")) {
+                        break;
+                    }
                     request = inputReader.readLine();
                 } catch (IOException e) {
                     e.printStackTrace();
