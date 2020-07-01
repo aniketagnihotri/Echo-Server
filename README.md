@@ -1,2 +1,2 @@
 # Echo-Server
-A basic implementation of an Echo Server written in both C and Java.
+A basic implementation of an Echo Server written in Java.
